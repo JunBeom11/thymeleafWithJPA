@@ -20,7 +20,7 @@ public class Member {
 
     private String userName;
 
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID")
+    @ManyToOne // member가 다 Team이 원, 다대일
+    @JoinColumn(name = "TEAM_ID") // 컬럼명 Team의 ID
     private Team team;
 }
