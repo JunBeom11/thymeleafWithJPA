@@ -17,7 +17,6 @@ import java.util.List;
 @Table(name = "tbl_member")
 public class Team {
 
-    //ㅇㅁㄴㅇㄴㅁ
     @Column(name = "TEAM_ID")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
