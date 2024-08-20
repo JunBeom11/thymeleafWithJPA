@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script th:inline="javascript" type="text/javascript">
+    $(document).ready(function() {
+        setTable();
+    })
+
+    const setTable = () => {
+        $.ajax({
+            type: "get",
+            url: "/hello/table/load",
+            success: function(data) {
+                console.log(data);
+
+                $("#udoTable").replaceWith(data);
+            },
+            error(a, b, c) {
+
+            }
+        });//ajax
+    }
+</script>
+
+<body>
+    <table style="width: 500px; height: 500px;" id="udoTable">
+        <colgroup>
+            <col style="background-color:darkseagreen;">
+        </colgroup>
+        <thead>
+        <tr>
+            <th rowspan="2">구분</th>
+            <th colspan="3" style="background-color:wheat;">우도입도 총괄요금표</th>
+        </tr>
+        <tr>
+            <th:block th:each="table:${tableRowlist}">
+                <th th:text="${table.title}"></th>
+            </th:block>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th:block th:each="numbers:${phoneNumberList}">
+                <th th:text="${numbers.number}"></th>
+            </th:block>
+            <th>01012345678</th>
+            <td>2,000원</td>
+            <td>1,000원</td>
+            <td>500원</td>
+        </tr>
+        <tr>
+            <th>01045556666</th>
+            <td>2,000원</td>
+            <td>800원</td>
+            <td>300원</td>
+        </tr>
+        <tr>
+            <th>01066667777</th>
+            <td>700원</td>
+            <td>500원</td>
+            <td>300원</td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
